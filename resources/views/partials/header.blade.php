@@ -7,7 +7,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('homeE')}}">ALL-EQUIPE</a>
+                <a class="nav-link active" aria-current="page" href="{{route('equipe.index')}}">ALL-EQUIPE</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">ALL-JOUEUR</a>

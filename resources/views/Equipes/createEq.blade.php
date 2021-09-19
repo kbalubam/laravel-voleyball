@@ -1,6 +1,6 @@
 @extends('template.welcome')
 @section('content')
-<form action="{{route('storeE')}}" method="POST">
+<form action="{{route('equipe.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">nom</label>
@@ -23,13 +23,10 @@
             <label for="exampleInputPassword1" class="form-label">maxjoueur</label>
 
 
+    @foreach ($continents as $continent)
 
-    <option value="1">Europe</option>
-    <option value="2">Afrique</option>
-    <option value="3">Asie</option>
-    <option value="4">Amerique</option>
-    <option value="5">Oceanie</option>
-
+    <option value="{{$continent->id}}">{{$continent->nom}}</option>
+    @endforeach
 
     </select>
 

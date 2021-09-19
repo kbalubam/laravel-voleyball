@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipeController;
+use App\Http\Controllers\JoueurController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [EquipeController::class, 'index'])->name('homeE');
+Route::resource('/equipe', EquipeController::class);
 
-Route::get('/equipe/create',[EquipeController::class, 'create'])->name('create');
 
-Route::post('/equipe', [EquipeController::class, 'store'])->name('storeE');
 
-Route::get('/equipe/{id}/show',[EquipeController::class,'show'])->name('showE');
+Route::resource('/joueur', JoueurController::class);
 
 

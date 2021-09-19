@@ -9,6 +9,6 @@ class Photo extends Model
 {
     use HasFactory;
     public function joueur(){
-        return $this->hasOne(Joueur::class,'foreign_key');
+        return $this->belongsTo(Joueur::class,'foreign_key');
     }
 }

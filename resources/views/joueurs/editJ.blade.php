@@ -1,7 +1,7 @@
 @extends('template.welcome')
 @section('content')
-<form action="{{route('joueur.store')}}" method="POST">
-
+<form action="{{route('joueur.update',$joueur->id)}}" method="POST">
+    @method('PUT')
     @csrf
 
     <div class="mb-3">
@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Email</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" name="email">
+        <input type="text" class="form-control" id="exampleInputPassword1" name="Email">
         </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Genre</label>
@@ -38,15 +38,12 @@
     @foreach ($continents as $continent)
     <option value="{{$continent->id}}">{{$continent->nom}}</option>
     @endforeach
-    </select>
 
     <select class="form-select" aria-label="Default select example" name="role_id">
     <label for="exampleInputPassword1" class="form-label">maxjoueur</label>
     @foreach ($roles as $role)
     <option value="{{$role->id}}">{{$role->nom}}</option>
     @endforeach
-    </select>
-
         <button type="submit" class="btn btn-primary">Submit</button>
 
   </form>

@@ -9,7 +9,7 @@ class Equipe extends Model
 {
     use HasFactory;
 
-    public function joueur(){
+    public function joueurs(){
         return $this->hasMany(Joueur::class);
     }
     public function continent(){

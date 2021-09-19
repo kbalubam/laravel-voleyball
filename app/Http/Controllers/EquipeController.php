@@ -30,8 +30,8 @@ class EquipeController extends Controller
      */
     public function create()
     {
-        $dataEq = Equipe::all();
-        return view('Equipes.createEq' ,compact('dataEq'));
+        $continents = Continent::all();
+        return view('Equipes.createEq' ,compact('continents'));
     }
 
     /**
@@ -42,6 +42,8 @@ class EquipeController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $newEntry = new Equipe;
         $newEntry->nom = $request->nom;
         $newEntry->ville = $request->ville;
@@ -49,7 +51,7 @@ class EquipeController extends Controller
         $newEntry->maxjoueur = $request->maxjoueur;
         $newEntry->continent_id = $request->continent_id;
         $newEntry->save();
-        return redirect()->route('homeE');
+        return redirect()->route('equipe.index');
     }
 
     /**
@@ -58,11 +60,11 @@ class EquipeController extends Controller
      * @param  \App\Models\Equipe  $equipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipe $id)
+    public function show(Equipe $equipe)
     {
-        $equipe = $id;
-        $dataEq = Equipe::all();
-        return view('Equipes.showEq',compact('equipe', 'dataEq'));
+
+
+        return view('Equipes.showEq',compact('equipe'));
     }
 
     /**
@@ -73,7 +75,10 @@ class EquipeController extends Controller
      */
     public function edit(Equipe $equipe)
     {
-        //
+        $continents = Continent::all();
+
+        return view('Equipes.edit', compact('equipe','continents'));
+
 
     }
 
@@ -88,6 +93,15 @@ class EquipeController extends Controller
     {
         //
 
+
+
+        $equipe->nom = $request->nom;
+        $equipe->ville = $request->ville;
+        $equipe->pays= $request->pays;
+        $equipe->maxjoueur = $request->maxjoueur;
+        $equipe->continent_id = $request->continent_id;
+        $equipe->save();
+        return redirect()->route('equipe.index')->with('message', 'updated');
     }
 
     /**
@@ -98,6 +112,7 @@ class EquipeController extends Controller
      */
     public function destroy(Equipe $equipe)
     {
-        //
+        $equipe->delete();
+        return redirect()->route('equipe.index');
     }
 }
