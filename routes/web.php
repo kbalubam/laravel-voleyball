@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EquipeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JoueurController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +23,7 @@ Route::resource('/equipe', EquipeController::class);
 
 
 Route::resource('/joueur', JoueurController::class);
+
+Route::resource('/home', HomeController::class);
 
 
